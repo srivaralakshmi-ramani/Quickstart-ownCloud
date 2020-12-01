@@ -34,6 +34,7 @@ This document is intended for users with the following roles and describes proce
   - Add a user account.
 - **User**
   - Connect to the ownCloud server using a desktop or mobile client.
+  
 ---
 
 # Scope of this document
