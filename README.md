@@ -150,12 +150,12 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
    
    >**Tip:** Although the containers are up and running, it may still take a few minutes until onwCloud is fully functional. If you do not see the web page, check the logs displayed on the terminal. If you are using a remote server, try SSH tunneling.
 
-   The login page of the ownCloud web UI is displayed, as shown in the following image: 
-   ![](assets/ownCloud_client_url.png)
+   The login page of the ownCloud web UI is displayed, as shown in the following image:
+   ![](assets/dockertest_ownCloud_web_ui_login_page.png)
    
    >**Note:** You do not have any valid user credentials, yet. As a result, you cannot use the docker image to log in to the ownCloud server.
    
-4. Execute the following commands in the terminal to stop the container and remove it from your machine:
+5. Execute the following commands in the terminal to stop the container and remove it from your machine:
 
    ```bash
    $ docker ps -a
