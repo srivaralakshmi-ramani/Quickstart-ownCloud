@@ -151,7 +151,8 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
    >**Tip:** Although the containers are up and running, it may still take a few minutes until onwCloud is fully functional. If you do not see the web page, check the logs displayed on the terminal. If you are using a remote server, try SSH tunneling.
 
    The login page of the ownCloud web UI is displayed, as shown in the following image:
-   ![](assets/dockertest_ownCloud_web_ui_login_page.png)
+   
+   ![](assets/docker_image_webui_login_page.png)
    
    >**Note:** You do not have any valid user credentials, yet. As a result, you cannot use the docker image to log in to the ownCloud server.
    
@@ -219,6 +220,7 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
     ```
     
 4. Save the `.env` file in the `owncloud-docker-server` project directory.
+
 5. Execute the `ls -a` command to verify that the `.env` file is now listed along with the docker-compose.yml file in the `owncloud-docker-server` project directory.
 
     ```bash
@@ -274,6 +276,7 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
     ```
     
     You have successfully verified that the server is up and running.
+    
 8. (Optional) Execute the `docker-compose stop` command to stop the server.
 
 The installation and basic configuration of the ownCloud server is complete.
@@ -283,10 +286,84 @@ Refer to [Installing with Docker](https://doc.owncloud.org/server/10.5/admin_man
 ---
 
 # User Management
+This topic provides procedural information for an administrator to perform the following user management tasks:
+  - [Allow access to users](#allow-access-to-users) to connect to the ownCloud server, using the server IP address and port number 8080
+  - [Add a user account](#add-a-user-account)
 
 ## Allow access to users
+>**Note:** This procedure and its process may vary depending on your network and firewall settings, and whether the server host is an actual machine or a virtual one.
+
+1. Enter `http://localhost:8080` in the address bar of your browser. 
+   Alternatively, you can enter `http://<public-IP-address>:8080`, the public IP address of the machine, if you have one.
+   
+   The login page is displayed.
+   
+   ![](assets/ownCloud_server_actual_login_page_with_adminaccount_credentials.png)
+   
+2. Enter your admin account credentials (default: `admin`/`admin`), which you configured in the `.env` file earlier.
+
+   You are now logged in as an administrator.
+   
+   ![](assets/ownCloud_server_home_screen.png)
+   
+3. Close the prompt related to the installation of desktop and mobile clients.
+
+   The **Files** page of the ownCloud web user interface (UI) is displayed.
+
+   ![](assets/ownCloud_server_files_screen.png)
+
+4. Note down the public IP address of the server.
+   
+   >**Tip:** If policies permit, you can try port forwarding to expose the server over the internet.
+   
+5. [Add users](#add-a-user-account), and share the public IP address and the port (default: `8080`) of the server.
+
+>**Important:** For ownCloud clients (both desktop and mobile): Ensure to configure and enable the [OAuth 2](https://doc.owncloud.com/server/10.5/admin_manual/configuration/server/security/oauth2.html) application for the server.
+
+Visit [ownCloud marketplace for OAuth2](https://marketplace.owncloud.com/apps/oauth2), for  a complete information on OAuth2 application.
 
 ## Add a user account
+>**Tip:** See [User Account Properties](#user-account-properties), for a list of properties associated with a user account.
+
+1. Log in to the ownCloud server as an administrator.
+  
+   >**Tip:** Refer to [Reset Admin Password](https://doc.owncloud.com/server/admin_manual/configuration/user/reset_admin_password.html), in case you have lost or forgotten your credentials.
+  
+   The **Files** page is displayed.
+  
+2. Expand the drop-down located at the top-right corner (default: `admin`) and click **Users**.
+   
+   The **Users** page is displayed.
+   
+   ![](assets/users-page-default-view.png)
+   
+   >**Note:** By default, the drop-down shows admin at the top of the list.
+   
+3. Enter the **Username** (Login Name) and **E-Mail** of the new user.
+
+4. (Optional) Assign the user a membership to the available **Groups**.
+
+    ![](assets/users-page-new-user.png)
+
+5. Click **Create**.
+
+User account is created successfully, and the details of the user are now visible in the **Users** page.
+
+>**Note:** The user receives an e-mail containing the username and a system-generated password. You cannot recover the password of a user but can reset it. If you have encryption enabled, there are special considerations for user password resets. For more information, see [Encryption Configuration](https://doc.owncloud.com/server/10.5/admin_manual/configuration/files/encryption/encryption_configuration.html).
+
+#### User Account Properties
+
+| Property | Description |    
+| --- | --- |    
+| **Username (Login Name)** | (**Mandatory**) The unique ID of an ownCloud user. It may contain letters (`a-z`, `A-Z`), numbers (`0-9`), dashes (`-`), underscores (`_`), periods (`.`) and at signs (`@`). Once set, you cannot change the **Username**. |    
+| **E-Mail** | (**Mandatory**) The e-mail address of the user, set by the administrator. |    
+| **Groups** | (**Optional**) By default, new users are not assigned any groups. However, you can create groups and assign users to groups, based on their roles and policies, and account privileges. |    
+| **Full Name** | (**Optional**) The display name of the user. If not set, it defaults to the login name. The full name appears on file shares, the ownCloud Web interface, and emails. |    
+| **Password** | (**Mandatory**) The password associated with the account of the user. It can be changed by administrators and users. |    
+| **Group Admin** | (**Optional**) Administrators of specific groups. They have the privileges to add, delete, and modify members of their respective group. As an administrator, you can designate one or more members of a group as group administrators. |    
+| **Quota** | (**Mandatory**) The maximum disk space allocated to each user for uploading and syncing files. As an administrator, you have the option to provision [external storage](https://doc.owncloud.com/server/admin_manual/configuration/files/external_storage/) in user quotas. | 
+
+Refer to [User Management](https://doc.owncloud.com/server/admin_manual/configuration/user/user_configuration.html), for other common tasks such as renaming a user, resetting password, deleting a user, and managing groups.
 
 ---
 
@@ -295,6 +372,8 @@ Refer to [Installing with Docker](https://doc.owncloud.org/server/10.5/admin_man
 ## Desktop client
 
 ## Mobile client
+
+---
 
 ### Android
 
