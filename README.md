@@ -152,7 +152,7 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
 
    The login page of the ownCloud web UI is displayed, as shown in the following image:
    
-   ![](https://github.com/srivaralakshmi-ramani/ownCloud-Quickstart-Manual/blob/main/assets/docker_image_ownCloud_webUI_login_page.PNG)
+   ![]{https://github.com/srivaralakshmi-ramani/ownCloud-Quickstart-Manual/blob/main/assets/docker_image_ownCloud_webUI_login_page.PNG}
    
    >**Note:** You do not have any valid user credentials, yet. As a result, you cannot use the docker image to log in to the ownCloud server.
    
