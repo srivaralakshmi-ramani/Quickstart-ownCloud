@@ -75,7 +75,7 @@ You can install ownCloud using Docker and the official [ownCloud Docker image](h
    ```
    >**Note:** The current official Docker image for ownCloud server is compatible only with Ubuntu 18.04.
    
-2. Run the `docker` command to verify that the docker is installed and running. You should see an output similar to this:
+2. Run the `docker` command to verify that the docker is installed and running.
 
    You should see an output similar to this:
    ```bash
@@ -116,6 +116,70 @@ You can install ownCloud using Docker and the official [ownCloud Docker image](h
 Visit [official docker documentation](https://docs.docker.com/engine/install/ubuntu/) for more information on the Docker Engine and its installation.
 
 ## Test the latest docker image
+1. Download the [official docker image](https://hub.docker.com/r/owncloud/server/tags) for ownCloud server 10.5, by executing the following command:
+
+   ```bash
+   $ docker pull owncloud/server:10.5
+   ```
+   On successful download of newer image, the following status message is displayed:
+
+   ```bash
+   Status: Downloaded newer image for owncloud/server:10.5docker.io/owncloud/server:10.5
+   ```
+   >**Note:** The time taken to download the image from Docker Hub may vary depending on your connection speed.
+   
+2. (Optional) If you are denied permission to connect to the Docker daemon socket and get the following error message, run the `sudo chmod 666 /var/run/docker .sock` command, enter your password on prompt, and retry downloading the docker image again:
+   
+   ```bash
+   Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.39/containers/json: dial unix /var/run/docker.sock: connect: permission denied
+   ```
+   
+3. Run the downloaded official docker image on port `8080` by executing the following command:
+  
+    ```bash
+    $ docker run -p8080:8080 owncloud/server:10.5
+    ```
+   Wait until you see the following output:
+   
+    ```bash
+    Starting apache daemon...
+    ```
+   
+4. Enter `http://localhost:8080` in the address bar of your favorite browser. 
+   Alternatively, you can enter `http://<public-IP-address>:8080`, the public IP address of the machine, if you have one.
+   
+   >**Tip:** Although the containers are up and running, it may still take a few minutes until onwCloud is fully functional. If you do not see the web page, check the logs displayed on the terminal. If you are using a remote server, try SSH tunneling.
+
+   The login page of the ownCloud web UI is displayed, as shown in the following image:
+   
+   ![](./assets/docker_image_ownCloud_webUI_login_page.png)
+   
+   >**Note:** You do not have any valid user credentials, yet. As a result, you cannot use the docker image to log in to the ownCloud server.
+   
+4. Run the following commands in the terminal to stop the container and remove it from your machine:
+
+   ```bash
+   $ docker ps -a
+   CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                    NAMES
+   11f315a007b3        owncloud/server:10.5   "/usr/bin/entrypoint…"   29 minutes ago      Up 29 minutes       0.0.0.0:8080->8080/tcp   quirky_germain
+    
+   $ docker stop quirky_germain
+   quirky_germain
+
+   $ docker ps -a
+   CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                        PORTS               NAMES
+   11f315a007b3        owncloud/server:10.5   "/usr/bin/entrypoint…"   32 minutes ago      Exited (137) 51 seconds ago                       quirky_germain
+
+   $ docker rm quirky_germain
+   quirky_germain
+
+   $ docker ps -a
+   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+   ```
+   
+   The testing of the latest official ownCloud Docker image is successful.
+   
 ## Install and configure ownCloud server
 
 
