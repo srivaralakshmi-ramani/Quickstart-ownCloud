@@ -44,13 +44,13 @@ This document is intended for users with the following roles and describes proce
   - [Deployment Recommendations](https://doc.owncloud.com/server/10.5/admin_manual/installation/deployment_recommendations.html) and [System Requirements](https://doc.owncloud.com/server/10.5/admin_manual/installation/system_requirements.html).
   - A 64-bit version of Ubuntu 18.04 LTS operating system is installed with a Docker Engine and a Docker Compose CLI tool, on your local machine.
 
-  > **Note:** This document does not cover the steps necessary for a detailed [manual installation](https://doc.owncloud.org/server/10.5/admin_manual/installation/manual_installation.html). If you are an experienced administrator who prefers a detailed manual installation and configuration, refer to the ownCloud's detailed [Admin Manual](https://doc.owncloud.org/server/10.5/admin_manual/installation/).
+> **Note:** This document does not cover the steps necessary for a detailed [manual installation](https://doc.owncloud.org/server/10.5/admin_manual/installation/manual_installation.html). If you are an experienced administrator who prefers a detailed manual installation and configuration, refer to the ownCloud's detailed [Admin Manual](https://doc.owncloud.org/server/10.5/admin_manual/installation/).
   
 - **For procedures related to User role:** This document provides information and instructions with its scope limited only to quickly access the ownCloud server using a desktop client (Mac OS X and Windows) or mobile client (Android and iOS).
 
-  - **For Mac OS X and Windows:** This document covers procedural information to install and configure a desktop client using only the [Installation Wizard](https://doc.owncloud.com/desktop/installing.html#installation-wizard).
+  - **For Mac OS X and Windows:** This document provides procedural information to install and configure a desktop client using **_only_** the [Installation Wizard](https://doc.owncloud.com/desktop/installing.html#installation-wizard).
   
-  > **Note:** This document does not cover desktop client installation instructions specific to Linux distribution.
+  > **Note:** This document does not cover desktop client installation instructions specific to _Linux distribution_.
 
 ---
 
@@ -150,7 +150,7 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
    
    >**Tip:** Although the containers are up and running, it may still take a few minutes until onwCloud is fully functional. If you do not see the web page, check the logs displayed on the terminal. If you are using a remote server, try SSH tunneling.
 
-   The login page of the ownCloud web UI is displayed, as shown in the following image:
+   The login page of the ownCloud web user interface (UI) is displayed.
    
    ![](assets/docker_image_webui_login_page.png)
    
@@ -178,7 +178,7 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
 
    ```
    
-   The testing of the latest official ownCloud Docker image is successful.
+The testing of the latest official ownCloud Docker image is successful.
    
 ## Install and configure ownCloud server
 1. Execute the following commands to create a project directory with the name `owncloud-docker-server` in your terminal and navigate to it:
@@ -282,7 +282,10 @@ Visit [official docker documentation](https://docs.docker.com/engine/install/ubu
 The installation and basic configuration of the ownCloud server is complete.
 
 Refer to [Installing with Docker](https://doc.owncloud.org/server/10.5/admin_manual/installation/docker/) for a complete information on managing a docker-based deployment.
->**Note:** The following procedures assume that as a prerequisite, you have the ownCloud server up and running with the default environment values.                                     
+
+>**Note:** The following procedures assume that as a prerequisite, you have the ownCloud server up and running with the default environment values.
+
+
 ---
 
 # User Management
@@ -308,7 +311,7 @@ This topic provides procedural information for an administrator to perform the f
    
 3. Close the prompt related to the installation of desktop and mobile clients.
 
-   The **Files** page of the ownCloud web user interface (UI) is displayed.
+   The **Files** page of the ownCloud web UI is displayed.
 
    ![](assets/ownCloud_server_files_screen.png)
 
@@ -320,7 +323,7 @@ This topic provides procedural information for an administrator to perform the f
 
 >**Important:** For ownCloud clients (both desktop and mobile): Ensure to configure and enable the [OAuth 2](https://doc.owncloud.com/server/10.5/admin_manual/configuration/server/security/oauth2.html) application for the server.
 
-Visit [ownCloud marketplace for OAuth2](https://marketplace.owncloud.com/apps/oauth2), for  a complete information on OAuth2 application.
+Visit [ownCloud marketplace for OAuth2](https://marketplace.owncloud.com/apps/oauth2) for  a complete information on OAuth2 application.
 
 ## Add a user account
 >**Tip:** See [User Account Properties](#user-account-properties), for a list of properties associated with a user account.
@@ -363,18 +366,116 @@ User account is created successfully, and the details of the user are now visibl
 | **Group Admin** | (**Optional**) Administrators of specific groups. They have the privileges to add, delete, and modify members of their respective group. As an administrator, you can designate one or more members of a group as group administrators. |    
 | **Quota** | (**Mandatory**) The maximum disk space allocated to each user for uploading and syncing files. As an administrator, you have the option to provision [external storage](https://doc.owncloud.com/server/admin_manual/configuration/files/external_storage/) in user quotas. | 
 
-Refer to [User Management](https://doc.owncloud.com/server/admin_manual/configuration/user/user_configuration.html), for other common tasks such as renaming a user, resetting password, deleting a user, and managing groups.
+Refer to [User Management](https://doc.owncloud.com/server/admin_manual/configuration/user/user_configuration.html) for other common tasks such as renaming a user, resetting password, deleting a user, and managing groups.
 
 ---
 
 # Connect to ownCloud server
+This topic provides procedural information on how you can access the ownCloud server to sync and share your files and folders using the following clients:
+
+  - [Desktop client](#desktop-client)
+  - [Mobile client](#mobile-client)
+      - [Android](#android)
+      - [iOS](#ios)
 
 ## Desktop client
+ownCloud Desktop Sync Client is available for Mac OS X, Windows, and various Linux distributions. ownCloud Desktop Sync Client enables you to access the ownCloud server, integrate your ownCloud into your file manager, and have the latest files and data automatically synchronized between your ownCloud server and local system, wherever they are located.
+
+1. Download the latest version of the [ownCloud desktop client application](https://owncloud.com/desktop-app/) that is suitable for your desktop operating system.
+
+2. Double-click the downloaded program file to launch the installation.
+   
+   The **ownCloud Connection Wizard** screen is displayed.
+   
+3. Enter the URL of your ownCloud server in the Server Address field and click **Next**.
+
+   ![](assets/ownCloud_client_url.png)
+   
+4. Enter the user credentials of your ownCloud server to log in and click **Next**.
+
+   ![](assets/ownCloud_client_username_password.png)
+   
+5. Perform the following tasks to set up the local folder options:
+   
+   i. For **Server**: Select one of the following two options:
+      - Sync everything from server
+      - Choose what to sync
+      
+   ii. For **Local Folder**: Choose your local sync folder
+   
+   ![](assets/ownCloud_client_load_folder_to_sync.png)
+      
+   >**Note:** The default local sync folder is **_ownCloud_**, in your home directory.
+   
+6. Click **Connect**.
+
+   The desktop client application attempts to connect you to the ownCloud server.
+
+   >**Note:** If you are successfully connected to your ownCloud server, you are prompted with two options to prefer how you want to [synchronize](https://doc.owncloud.com/desktop/navigating.html) your files and folder with the ownCloud server.
+
+7. Select one of the following two options:
+   - Open ownCloud in Browser
+   - Open Local Folder
+   
+    ![](assets/open_ownCloud_server_browser_local_folder.png)
+    
+8. Click **Finish**.
+   
+   The ownCloud server starts synchronizing your files and folders with the ownCloud server.
+   
+Refer to [ownCloud - Desktop](https://doc.owncloud.com/desktop/) for more information on installation, configuration, and usage of the desktop client.
 
 ## Mobile client
-
----
+The ownCloud mobile client is available for mobile devices with an Android or iOS operating system. The ownCloud mobile client helps you to quickly connect to the ownCloud server from your mobile devices, automatically synchronize files, share files, upload photos and videos, and add files from your mobile device to the ownCloud server.
 
 ### Android
+With ownCloud Android App you can browse all your ownCloud synced files, create and edit new files, share these files and folders with co-workers, and keep the contents of those folders in sync across all your devices. 
+
+1. Download the [ownCloud Android](https://owncloud.com/mobile-apps/) application.
+
+   >**Note:** Alternatively, you can log in to the [ownCloud web interface](https://doc.owncloud.com/server/10.5/user_manual/webinterface.html) and download ownCloud Android App from your **Personal** page by clicking on the link to the application.
+
+2. Install ownCloud Android App.
+
+   >**Note:** The installation is very similar to all other mobile applications. When you run ownCloud Android App for the first time, the **New Features Wizard** screen is displayed. This wizard provides you a quick overview of the new features in the application so that you can easily use them at the earliest.
+   
+   ![](assets/new-features-wizard-step-owncloud-android-app.png)
+   
+3. Enter the URL of your ownCloud server and your login credentials (username and password) to log in to the application.
+
+   ![](assets/mobile-app-signin.png)
+
+4. Click **Yes**, if you see a prompt about trusting the certificates of the server.
+
+   ![](assets/mobile_app_trust_certificate.png)
+
+5. Use ownCloud Android App, starting at the **All Files** screen.
+
+   ![](assets/android-all-files-overview.png)
+
+Refer to [ownCloud - Android documentation](https://doc.owncloud.com/android/) for a complete information on the setup and usage of ownCloud Android App.
 
 ### iOS
+ownCloud iOS App enables you to access, work off-line and online, upload, and share files and folders safely and comfortably from your iPhone and iPad.
+
+1. Download the [ownCloud iOS](https://owncloud.com/mobile-apps/) application.
+
+   >**Note:** Alternatively, you can log in to the [ownCloud web interface](https://doc.owncloud.com/server/10.5/user_manual/webinterface.html) and download ownCloud iOS App from your **Personal** page by clicking on the link to the application.
+
+2. Install ownCloud iOS App.
+
+   >**Note:** The installation is very similar to all other mobile applications.
+   
+3. Enter the URL of your ownCloud server and your login credentials (username and password) to log in to the application.
+
+   ![](assets/mobile-app-signin.png)
+
+4. Click **Yes**, if you see a prompt about trusting the certificates of the server.
+
+   ![](assets/mobile_app_trust_certificate.png)
+
+5. Use ownCloud iOS App, starting at the **Files** screen.
+
+   ![](assets/ios-files-list.png)
+   
+Refer to [ownCloud - iOS documentation](https://doc.owncloud.com/ios-app/) for a complete information on the setup and usage of ownCloud iOS App.
